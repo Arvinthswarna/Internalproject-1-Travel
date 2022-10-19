@@ -1,0 +1,50 @@
+<script>
+    console.log("Loading Data from tour Get API");    
+
+    function Submit(){
+        var tid = document.getElementById('pro-id').value;
+        var tname = document.getElementById('pro-name').value;
+        var tcost = document.getElementById('pro-cost').value;
+        var tdays = document.getElementById('pro-days').value;
+        let data = {
+            tourId: tid,
+            tourName: tname,
+            tourCost: tcost,
+            tourDays: tdays,
+            
+
+       }
+
+
+       
+
+        fetch('http://localhost:4001/tour/',{
+        method:"POST",
+        body: JSON.stringify(data),
+        headers : {
+            "Content-Type":"application/json",
+            "Access-Control-Allow-Origin":"*"
+        }
+       }).then(response => response.json())
+         .then(json => console.log(json));
+         
+         alert("Submitted Successfully !!! ")
+    }
+
+
+    
+</script>
+
+<body>
+
+    <div id="Submit">
+        <h2> Book Your Tour: </h2>
+        tourId: <input type="text" id="pro-id" /> <br /> <br />
+        tourName: <input type="text" id="pro-name"/> <br /> <br />
+        tourCost: <input type="text" id="pro-cost"/> <br /> <br />
+        tourDays: <input type="text" id="pro-days"/> <br /> <br />
+       <button onclick="Submit()"> Submit</button>
+       <h2 id="back"><a href="./index.html"> Back </a>  </h2>
+       
+
+    </div>
